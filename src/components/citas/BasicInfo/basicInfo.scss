@@ -1,0 +1,65 @@
+.form{
+    max-width: 500px;
+    border: solid 1px gray;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    padding-top: 20px; 
+    box-shadow: 2px 2px 10px gray;
+    display: block;
+}
+.container_form{
+    display: flex;
+    justify-content: center;
+}
+.containerStand{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 30px;
+
+}
+.topSectionTop{
+    width: 100%;
+}
+.topSection_input{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around  ;
+    width: 50%;
+    padding-right: 10px;
+}
+.topSection_image{
+    display: flex;
+    width: 50%;
+    padding-left: 10px;
+}
+.topSection_desc{
+    display: flex;
+    width: 100%;
+    margin-top: 10px;
+    flex-direction: column;
+
+    input{
+        margin-top: 10px;
+    }
+}
+.spacer{
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+}
+.btmError{
+    color: white;
+    border:solid 1px gray;
+    padding:px;
+    border-radius: 3px;
+    background-color: rgb(238, 130, 130);
+}
+.btmPrimary {
+    color: white;
+    border:solid 1px gray;
+    border-radius: 3px;
+    background-color: rgb(33, 35, 172);
+    cursor: pointer;
+}
