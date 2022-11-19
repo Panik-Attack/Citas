@@ -1,67 +1,76 @@
-import React, { useReducer } from "react";
-import { Input, Checkbox, DatePicker, Form } from "antd";
-import { useForm } from "../../../hooks/useForm";
-import { todoReducer as citaReducer } from "../../disponibilidad/CitaReducer";
+import React from "react";
+// import React, { useEffect, useReducer } from "react";
+import { Input, InputNumber, Checkbox, DatePicker, Form, Button } from "antd";
+// import { useForm } from "../../../hooks/useForm";
+// import { citaReducer } from "../../disponibilidad/CitaReducer";
 import "antd/dist/antd.css";
 
 
 const {Item} = Form
 const { TextArea } = Input;
 
-export const BasicInfo = () => {
-  const [dispatch] = useReducer(citaReducer, []);
+// const init = () =>{
+//   return JSON.parse(localStorage.getItem('todos'))|| []
+// }
 
-  const [
-    {
-      nombreCita,
-      nombreProducto,
-      precioProducto,
-      description,
-      date,
-      confirm,
-      cancel,
-    },
-    handleInputChange,
-    handleCheckChange,
-    reset,
-  ] = useForm({
-    nombreCita: "",
-    nombreProducto: "",
-    precioProducto: "",
-    description: "",
-    date: "",
-    confirm: "",
-    cancel: "",
-  });
+export const BasicInfo = ({closeModal, handleAddCita}) => {
+  // const [citas, dispatch] = useReducer(citaReducer, [], init);
 
-  const handleAddCita = (newCita) => {
-    dispatch({
-      type: "add",
-      payload: newCita,
-    });
-  };
+  // useEffect(() => {
+  //   localStorage.setItem('citas', JSON.stringify( citas ))
+  // }, [citas])
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  // const [
+  //   {
+  //     nombreCita,
+  //     nombreProducto,
+  //     precioProducto,
+  //     description,
+  //     date,
+  //     confirm,
+  //     cancel,
+  //   },
+  //   reset,
+  // ] = useForm({
+  //   nombreCita: "",
+  //   nombreProducto: "",
+  //   precioProducto: "",
+  //   description: "",
+  //   date: "",
+  //   confirm: "",
+  //   cancel: "",
+  // });
 
-    if (description.trim().length <= 1) {
-      return;
-    }
+  // const handleAddCita = (newCita) => {
 
-    const newCita = {
-      id: new Date().getTime(),
-      nombreCita: nombreCita,
-      nombreProducto: nombreProducto,
-      precioProducto: precioProducto,
-      description: description,
-      date: date,
-      confirm: confirm,
-      cancel: cancel,
-    };
+  //   dispatch({
+  //     type: "add",
+  //     payload: newCita,
+  //   });
 
-    handleAddCita(newCita);
-    reset();
-  };
+  // };
+
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+
+  //   if (description.trim().length <= 1) {
+  //     return;
+  //   }
+
+  //   const newCita = {
+  //     id: new Date().getTime(),
+  //     nombreCita: nombreCita,
+  //     nombreProducto: nombreProducto,
+  //     precioProducto: precioProducto,
+  //     description: description,
+  //     date: date,
+  //     confirm: confirm,
+  //     cancel: cancel,
+  //   };
+
+  //   handleAddCita(newCita);
+  //   reset();
+  // };
 
   const layout={
     labelCol:{
@@ -71,73 +80,102 @@ export const BasicInfo = () => {
       span: 16,
     }
   }
+
+  const formSuccess=(datos)=>{
+    console.log('Formulario enviado',datos)
+
+    const newCita = {
+      id: new Date().getTime(),
+      done: false,
+      ...datos
+    }
+
+    console.log(newCita.id)
+
+    handleAddCita(newCita)
+
+  }
+  
+  const formFailed = (error) =>{
+    console.log('Error', error)
+  }
+
   return (
     <div className="container_form">
+      <Form
+        name="formulario" 
+        initialValues={{
+          confirm: true,
+          cancel: true
+        }}
+        onFinish={formSuccess}
+        onFinishFailed={formFailed} 
+        {...layout}
+        >
 
-
-      <Form {...layout}>
-
-          <Item label="Nombre de la Cita">
-            <Input
-              placeholder="ej.. Psiquiatria, Carpineria .."
-              type="text"
-              name="nombreCita"
-              autoComplete="off"
-              onChange={handleInputChange}
-            />
+          <Item 
+              label="Nombre de la Cita"
+              name='nombreCita'
+              rules={[{
+                required: true,
+                message: 'Por favor ingresar el nombre de la cita'
+                }]}>
+              <Input/>
           </Item>
-          <Item label='Descripcion'>
-            <TextArea
-              placeholder="ej.. Brindamos servicios de ..."
-              type="text"
-              name="description"
-              autoComplete="off"
-              onChange={handleInputChange}
-            />
+
+          <Item 
+              label='Descripcion'
+              name='descripcionCita'
+              rules={[{
+                required: true,
+                message: 'Por favor ingresar la descripcion de la cita'
+              }]}>
+              <TextArea/>
           </Item>
           <hr />
           <br/>
           {/* Buttom Section */}
-          <Item label='Nombre del Producto'>
-            <Input
-              placeholder="ej.. Consulta, Mesa de madera ..."
-              type="text"
-              name="nombreProducto"
-              onChange={handleInputChange}
-            />
+
+          <Item 
+              label='Nombre del producto'
+              name='nombreProducto'
+              rules={[{
+                required: true,
+                message: 'Por favor ingresar el nombre del Producto'
+                }]}>
+              <Input/>
           </Item>
 
-          <Item label='Precio'>
-            <Input
-              placeholder="$ 100.00 "
-              type="number"
-              name="precioProducto"
-              onChange={handleInputChange}
-            />
+          <Item 
+              label='Precio'
+              name='precioProducto'
+              rules={[{
+                  required: true,
+                  message: 'Por favor ingresar el precio del Producto'
+                  }]}>
+              <InputNumber/>
           </Item>  
 
-          <Item label='Fecha y Hora'>
-            <DatePicker
-              renderExtraFooter={() => "extra footer"}
-              showTime
+          <Item 
+              label='Fecha y Hora'
               name="date"
-              // onChange={handleInputChange}
-            />
+              >
+              <DatePicker/>
           </Item>
 
-          <Item label='Requiere Confirmacion?'>
-            <Checkbox
-              name="confirm"
-              onChange={handleCheckChange}
-            />
+          <Item name='confirm' valuePropName="checked">
+            <Checkbox>Requiere Confirmacion?</Checkbox>
           </Item>
 
-          <Item label='Puede Cancelar?'>
-            <Checkbox
-              name="cancel"
-              onChange={handleCheckChange}
-            />
+          <Item name='cancel' valuePropName="checked">
+            <Checkbox>Puede Cancelar?</Checkbox>
           </Item>
+
+          <hr/>     
+          <br/>   
+
+          <Button onClick={closeModal}>Cancelar</Button>
+          <Button type='primary' htmlType="submit">Agregar</Button>
 
       </Form>
     </div>

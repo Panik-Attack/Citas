@@ -10,7 +10,7 @@ export const CitasList = ({citas, handleDelete, handleToggle}) => {
                 //TodoListItem
                 <CitaListItem
                     key={cita.id}
-                    todo={cita}
+                    cita={cita}
                     index={i}
                     handleDelete={handleDelete}
                     handleToggle={handleToggle}/>

@@ -1,16 +1,21 @@
-import React, {useReducer  } from 'react'
-import {todoReducer as citaReducer} from './CitaReducer'
+import React, {useEffect, useReducer  } from 'react'
+import {citaReducer} from './CitaReducer'
 import {CitasList} from './CitasList'
 import { CitaAdd } from './CitaAdd'
 
 import './citasApp.scss'
 
-
-
+const init = () =>{
+    return JSON.parse(localStorage.getItem('todos'))|| []
+}
 
 export const CitaApp = () => {  
 
-    const [citas, dispatch] = useReducer(citaReducer, [], )
+    const [citas, dispatch] = useReducer(citaReducer, [], init)
+
+    useEffect(() => {
+        localStorage.setItem('citas', JSON.stringify( citas ))
+      }, [citas])
 
     const handleDelete = (citaId) =>{
 
@@ -45,7 +50,7 @@ export const CitaApp = () => {
         <h1>Citas: ({citas.length})</h1>
         <hr/>
 
-        <div >
+        <div>
             
             <div>
                 
@@ -53,21 +58,13 @@ export const CitaApp = () => {
                     citas={citas}
                     handleDelete={handleDelete}
                     handleToggle={handleToggle}/>
-
-
             </div>
 
             <div>
-                
                 <CitaAdd 
                     handleAddCita={handleAddCita}/>
-               
-
             </div>
             
-
-
-
         </div>
 
     </div>

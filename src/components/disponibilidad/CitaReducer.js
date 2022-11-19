@@ -1,5 +1,5 @@
 
-export const todoReducer = (state = [], action) =>{
+export const citaReducer = (state = [], action) =>{
 
     switch ( action.type ) {
         case 'add': 
