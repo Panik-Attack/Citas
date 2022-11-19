@@ -53,7 +53,7 @@ export const CitaApp = () => {
 
         <div>
             {
-                (citas==''
+                (citas ===''
                 ?
                     <h2>No hay citas disponibles</h2>
                 :

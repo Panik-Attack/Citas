@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Button, Modal } from 'antd';
-import { BasicInfo } from '../citas/BasicInfo/BasicInfo';
+import { BasicInfo } from '../citas/BasicInfo';
 import './citaAdd.scss';
 
 export const CitaAdd = ({handleAddCita}) => {
@@ -29,11 +29,6 @@ export const CitaAdd = ({handleAddCita}) => {
         open={modal}
         onCancel={closeModal}
         footer={null}
-        // footer={[
-        //     <Button onClick={closeModal}>Cancelar</Button>,
-        //     <Button type='primary'>Agregar</Button>
-        // ]}
-        // onOk={PENDIENTE}
     >
             <BasicInfo closeModal={closeModal} handleAddCita={handleAddCita} />
     </Modal>

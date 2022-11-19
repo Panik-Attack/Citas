@@ -1,76 +1,22 @@
-import React from "react";
-// import React, { useEffect, useReducer } from "react";
-import { Input, InputNumber, Checkbox, DatePicker, Form, Button } from "antd";
-// import { useForm } from "../../../hooks/useForm";
-// import { citaReducer } from "../../disponibilidad/CitaReducer";
+import React, { useState } from "react";
+
+import { Input, InputNumber, Checkbox, DatePicker, Form, Button, Radio } from "antd";
 import "antd/dist/antd.css";
 
 
 const {Item} = Form
 const { TextArea } = Input;
-
-// const init = () =>{
-//   return JSON.parse(localStorage.getItem('todos'))|| []
-// }
+const {Group} = Radio
 
 export const BasicInfo = ({closeModal, handleAddCita}) => {
-  // const [citas, dispatch] = useReducer(citaReducer, [], init);
 
-  // useEffect(() => {
-  //   localStorage.setItem('citas', JSON.stringify( citas ))
-  // }, [citas])
+  const [form] = Form.useForm()
+  
+  const [value, setValue] = useState()
 
-  // const [
-  //   {
-  //     nombreCita,
-  //     nombreProducto,
-  //     precioProducto,
-  //     description,
-  //     date,
-  //     confirm,
-  //     cancel,
-  //   },
-  //   reset,
-  // ] = useForm({
-  //   nombreCita: "",
-  //   nombreProducto: "",
-  //   precioProducto: "",
-  //   description: "",
-  //   date: "",
-  //   confirm: "",
-  //   cancel: "",
-  // });
-
-  // const handleAddCita = (newCita) => {
-
-  //   dispatch({
-  //     type: "add",
-  //     payload: newCita,
-  //   });
-
-  // };
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-
-  //   if (description.trim().length <= 1) {
-  //     return;
-  //   }
-
-  //   const newCita = {
-  //     id: new Date().getTime(),
-  //     nombreCita: nombreCita,
-  //     nombreProducto: nombreProducto,
-  //     precioProducto: precioProducto,
-  //     description: description,
-  //     date: date,
-  //     confirm: confirm,
-  //     cancel: cancel,
-  //   };
-
-  //   handleAddCita(newCita);
-  //   reset();
-  // };
+  const onChange = (e) =>{
+    setValue(e.target.value)
+  }
 
   const layout={
     labelCol:{
@@ -94,6 +40,7 @@ export const BasicInfo = ({closeModal, handleAddCita}) => {
 
     handleAddCita(newCita)
 
+    form.resetFields()
   }
   
   const formFailed = (error) =>{
@@ -110,6 +57,7 @@ export const BasicInfo = ({closeModal, handleAddCita}) => {
         }}
         onFinish={formSuccess}
         onFinishFailed={formFailed} 
+        form={form}
         {...layout}
         >
 
@@ -134,7 +82,6 @@ export const BasicInfo = ({closeModal, handleAddCita}) => {
           </Item>
           <hr />
           <br/>
-          {/* Buttom Section */}
 
           <Item 
               label='Nombre del producto'
@@ -156,8 +103,15 @@ export const BasicInfo = ({closeModal, handleAddCita}) => {
               <InputNumber/>
           </Item>  
 
+          <Item label='Tipo de Producto'>
+              <Group onChange={onChange} value={value} name='disponibilidad' defaultValue={1}>
+                  <Radio value={1}>Servicio</Radio>
+                  <Radio value={2}>Material</Radio>
+              </Group>
+          </Item>
+
           <Item 
-              label='Fecha y Hora'
+              label='Disponibilidad'
               name="date"
               >
               <DatePicker/>
@@ -175,7 +129,7 @@ export const BasicInfo = ({closeModal, handleAddCita}) => {
           <br/>   
 
           <Button onClick={closeModal}>Cancelar</Button>
-          <Button type='primary' htmlType="submit">Agregar</Button>
+          <Button onClick={closeModal} type='primary' htmlType="submit">Agregar</Button>
 
       </Form>
     </div>
