@@ -1,12 +1,13 @@
 import React, {useEffect, useReducer  } from 'react'
 import {citaReducer} from './CitaReducer'
+
 import {CitasList} from './CitasList'
 import { CitaAdd } from './CitaAdd'
 
 import './citasApp.scss'
 
 const init = () =>{
-    return JSON.parse(localStorage.getItem('todos'))|| []
+    return JSON.parse(localStorage.getItem('citas'))|| []
 }
 
 export const CitaApp = () => {  
@@ -51,14 +52,21 @@ export const CitaApp = () => {
         <hr/>
 
         <div>
+            {
+                (citas==''
+                ?
+                    <h2>No hay citas disponibles</h2>
+                :
             
-            <div>
-                
-                <CitasList 
-                    citas={citas}
-                    handleDelete={handleDelete}
-                    handleToggle={handleToggle}/>
-            </div>
+                <div>
+                    
+                    <CitasList 
+                        citas={citas}
+                        handleDelete={handleDelete}
+                        handleToggle={handleToggle}/>
+                </div>
+
+                )}
 
             <div>
                 <CitaAdd 
