@@ -31,10 +31,10 @@ export const CitasListItem = ({ cita, handleDelete, handleToggle, index }) => {
             <Button
                 onClick={() => handleDelete(cita.id)}
                 shape='circle'
-                type='primary'
+                type='link'
                 danger
             >
-                X
+               {<b>X</b> } 
             </Button>
 
 
