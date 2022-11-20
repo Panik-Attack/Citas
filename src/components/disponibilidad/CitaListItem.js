@@ -1,3 +1,4 @@
+import { Button } from 'antd'
 import React from 'react'
 
 export const CitaListItem = ( {cita, handleDelete, handleToggle, index}) => {
@@ -5,19 +6,32 @@ export const CitaListItem = ( {cita, handleDelete, handleToggle, index}) => {
     <li
         key={cita.id}
     >   
-        <p 
-            className={`${cita.done && 'complete'}`}
-            onClick={() => handleToggle(cita.id)}
+        <h2>
+            {cita.nombreCita}
+        </h2>
+        
+        
+        <Button 
+            onClick={() => handleDelete(cita.id)}
+            shape='circle'
+            type='primary'
+            danger
         >
-            {index + 1}.{cita.nombreCita}
+            X
+        </Button>
+
+
+        <p>
+            {cita.descripcionCita}
         </p>
 
 
-        <button 
-            onClick={() => handleDelete(cita.id)}
-        >
-            Borrar
-        </button>
+
+        <p>
+            <br/>
+            Precio: ${cita.precioProducto}
+        </p>
+
     </li>
   )
 }

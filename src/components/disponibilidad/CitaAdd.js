@@ -21,7 +21,7 @@ export const CitaAdd = ({handleAddCita}) => {
   return (
     <div className='container'>
 
-    <h4>Agregar Cita</h4>
+
         <hr/>
 
     <Modal 
@@ -29,6 +29,8 @@ export const CitaAdd = ({handleAddCita}) => {
         open={modal}
         onCancel={closeModal}
         footer={null}
+
+
     >
             <BasicInfo closeModal={closeModal} handleAddCita={handleAddCita} />
     </Modal>
@@ -37,6 +39,7 @@ export const CitaAdd = ({handleAddCita}) => {
     <Button
     type='primary'
     onClick={openModal}
+
     >
         Agregar Cita
     </Button>

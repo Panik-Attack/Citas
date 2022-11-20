@@ -68,7 +68,9 @@ export const BasicInfo = ({closeModal, handleAddCita}) => {
                 required: true,
                 message: 'Por favor ingresar el nombre de la cita'
                 }]}>
-              <Input/>
+              <Input
+              placeholder="ej.. Psiquiatria, Carpinteria"
+              />
           </Item>
 
           <Item 
@@ -78,7 +80,10 @@ export const BasicInfo = ({closeModal, handleAddCita}) => {
                 required: true,
                 message: 'Por favor ingresar la descripcion de la cita'
               }]}>
-              <TextArea/>
+              <TextArea
+              placeholder="ej... Ofrecemos Servicios de ..."
+
+              />
           </Item>
           <hr />
           <br/>
@@ -90,7 +95,10 @@ export const BasicInfo = ({closeModal, handleAddCita}) => {
                 required: true,
                 message: 'Por favor ingresar el nombre del Producto'
                 }]}>
-              <Input/>
+              <Input
+                 placeholder="ej... Consulta medica, Mesa de madera ..."
+
+              />
           </Item>
 
           <Item 
@@ -100,7 +108,10 @@ export const BasicInfo = ({closeModal, handleAddCita}) => {
                   required: true,
                   message: 'Por favor ingresar el precio del Producto'
                   }]}>
-              <InputNumber/>
+              <InputNumber
+                 placeholder="ej..$150.00"
+
+              />
           </Item>  
 
           <Item label='Tipo de Producto'>
