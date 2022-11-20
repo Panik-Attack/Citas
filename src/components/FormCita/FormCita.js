@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-
 import { Input, InputNumber, Checkbox, DatePicker, Form, Button, Radio } from "antd";
+
+import './formCita.scss'
 import "antd/dist/antd.css";
 
 
@@ -48,7 +49,7 @@ export const FormCita = ({ closeModal, handleAddCita }) => {
   }
 
   return (
-    <div className="container_form">
+    <div>
       <Form
         name="formulario"
         initialValues={{
@@ -138,10 +139,10 @@ export const FormCita = ({ closeModal, handleAddCita }) => {
 
         <hr />
         <br />
-
-        <Button onClick={closeModal}>Cancelar</Button>
-        <Button onClick={closeModal} type='primary' htmlType="submit">Agregar</Button>
-
+        <div className="btnContainer">  
+          <Button onClick={closeModal} danger>Cancelar</Button>
+          <Button onClick={closeModal} type='primary' htmlType="submit">Agregar</Button>
+        </div>   
       </Form>
     </div>
   );
