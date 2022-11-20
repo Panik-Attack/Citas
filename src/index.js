@@ -1,12 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { CitaApp } from './components/disponibilidad/CitaApp';
-// import { AppRouter } from './routers/AppRouter';
+import App from './App';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <CitaApp />
+    <App />
   </React.StrictMode>
 );
 
