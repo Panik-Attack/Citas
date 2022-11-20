@@ -150,9 +150,7 @@ export const FormCita = ({ closeModal, handleAddCita }) => {
 
               ]}
           >
-            <DatePicker
-            format='YYYY-MM-DD'
-            onChange={(date) => console.log(date)} />
+            <DatePicker/>
           </Item>
           :
           <Item

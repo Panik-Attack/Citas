@@ -43,10 +43,10 @@ export const CitasListItem = ({ cita, handleDelete, handleToggle, index }) => {
             </p>
 
 
-                <p>
-                    <br />
-                    Precio: ${cita.precioProducto}
-                </p>
+            <p id='precio'>
+                <br />
+                Precio: ${cita.precioProducto}
+            </p>
 
             <div className='infoBtn'>
                 <Button

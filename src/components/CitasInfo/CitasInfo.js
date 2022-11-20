@@ -1,7 +1,7 @@
 import { List } from 'antd'
 import Item from 'antd/lib/list/Item'
 import React from 'react'
-
+import moment from 'moment';
 
 export const CitasInfo = ({cita}) => {
   return (
@@ -25,7 +25,7 @@ export const CitasInfo = ({cita}) => {
           </Item>
           
           <Item>
-            <p><b>Disponible</b>: {JSON.stringify(cita.disponible)} </p>
+            <p><b>Disponible</b>: { moment(cita.disponible).format('DD-MM-YYYY') } </p>
           </Item>
           
           <Item>
