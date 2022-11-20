@@ -47,9 +47,9 @@ export const CitaApp = () => {
 
   return (
     <div className='container_app' >
-        <h1>Citas: ({citas.length})</h1>
+        <h1 >Citas: {citas.length}</h1>
         <hr/>
-
+        <br/>
         <div>
             
             <div>

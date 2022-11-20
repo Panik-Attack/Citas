@@ -1,10 +1,10 @@
 import React from 'react'
 import { CitaListItem } from './CitaListItem'
-
+import './citasList.scss'
 export const CitasList = ({citas, handleDelete, handleToggle}) => {
 
     return (
-            <ul >
+            <ul className='listContainer'>
             {
             citas.map( (cita, i) => (
                 //TodoListItem
