@@ -25,7 +25,15 @@ export const CitasInfo = ({cita}) => {
           </Item>
           
           <Item>
-            <p><b>Disponible</b>: { moment(cita.disponible).format('DD-MM-YYYY') } </p>
+            {(typeof cita.disponible === 'number')
+              ?
+                <p><b>Disponible</b>: {cita.disponible} </p>
+              :
+                <p><b>Disponible</b>: { moment(cita.disponible).format('DD-MM-YYYY') } </p>
+            }
+
+          
+          
           </Item>
           
           <Item>
