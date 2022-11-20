@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Button, Modal } from 'antd';
 import { FormCita } from '../FormCita/FormCita';
 
+
 import './citasAdd.scss';
 
 export const CitasAdd = ({ handleAddCita }) => {
@@ -16,6 +17,7 @@ export const CitasAdd = ({ handleAddCita }) => {
 
     const closeModal = () => {
         setModal(false)
+
     }
 
 

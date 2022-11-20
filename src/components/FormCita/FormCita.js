@@ -52,10 +52,12 @@ export const FormCita = ({ closeModal, handleAddCita }) => {
   return (
     <div>
       <Form
+        autoComplete="off"
         name="formulario"
         initialValues={{
           confirm: true,
-          cancel: true
+          cancel: true,
+          value: 1
         }}
         onFinish={formSuccess}
         onFinishFailed={formFailed}
@@ -66,10 +68,16 @@ export const FormCita = ({ closeModal, handleAddCita }) => {
         <Item
           label="Nombre de la Cita"
           name='nombreCita'
-          rules={[{
+          rules={[
+            {
             required: true,
-            message: 'Por favor ingresar el nombre de la cita'
-          }]}>
+            message: 'Por favor ingresar el nombre de la cita',
+            },
+            {whitespace: true},
+            {
+            min: 3,
+            message: 'El nombre debe contener mas de 3 caracteres '},
+          ]}hasFeedback>
           <Input
             placeholder="Psiquiatria, Carpinteria"
           />
@@ -81,10 +89,9 @@ export const FormCita = ({ closeModal, handleAddCita }) => {
           rules={[{
             required: true,
             message: 'Por favor ingresar la descripcion de la cita'
-          }]}>
+          }]}hasFeedback>
           <TextArea
             placeholder="Ofrecemos Servicios de ..."
-
           />
         </Item>
         <hr />
@@ -96,7 +103,12 @@ export const FormCita = ({ closeModal, handleAddCita }) => {
           rules={[{
             required: true,
             message: 'Por favor ingresar el nombre del Producto'
-          }]}>
+          },
+          {whitespace: true},
+          {
+          min: 3,
+          message: 'El nombre dede tener al menos 3 caracteres'
+          }]}hasFeedback>
           <Input
             placeholder="Consulta medica, Mesa de madera ..."
 
@@ -109,7 +121,7 @@ export const FormCita = ({ closeModal, handleAddCita }) => {
           rules={[{
             required: true,
             message: 'Por favor ingresar el precio del Producto'
-          }]}>
+          }]}hasFeedback>
           <InputNumber
             placeholder="$150.00"
 
@@ -129,6 +141,14 @@ export const FormCita = ({ closeModal, handleAddCita }) => {
           <Item
               label='Disponibilidad'
               name="date"
+              hasFeedback
+              rules={[
+                {
+                required: true,
+                message: 'Por favor seleccione una fecha'
+                },
+
+              ]}
           >
             <DatePicker />
           </Item>
@@ -136,6 +156,14 @@ export const FormCita = ({ closeModal, handleAddCita }) => {
           <Item
               label='Disponibilidad'
               name='cantidadProducto'
+              hasFeedback
+              rules={[
+                {
+                required: true,
+                message: 'Por favor ingresar una cantidad'
+                },
+                
+              ]}
           >
           <InputNumber
             placeholder="1, 2, 3, ..."
@@ -155,10 +183,16 @@ export const FormCita = ({ closeModal, handleAddCita }) => {
 
         <br />
         <div className="btnContainer">  
-          <Button onClick={closeModal} danger>Cancelar</Button>
+          <Button onClick={()=>{
+            form.resetFields()
+            closeModal()
+            }} danger>Cancelar</Button>
           <Button type='primary' htmlType="submit">Agregar</Button>
         </div>   
       </Form>
     </div>
   );
 };
+
+
+  
