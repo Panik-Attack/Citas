@@ -3,7 +3,7 @@
     
     li{
         background-color: rgba(232, 231, 231, 0.947);   
-        padding: 20px 20px 40px;
+        padding: 20px 20px 20px;
         list-style: none;
         display: flex;
         justify-content: space-between;
@@ -18,7 +18,7 @@
             padding: 10px 0 0 20px;
 
         }
-        p{  
+        #info{  
             overflow-wrap: break-word;
             overflow: auto;
             font-size: medium;
@@ -27,6 +27,17 @@
             padding-left: 20px;
             color: rgb(56, 56, 56);
         }
-    
+        
+    }
+    .infoBtn{
+        display: flex;
+        align-items: flex-end;
+    }
+    .btnContainer{
+        display: flex;
+        justify-content: flex-end;
+        button{
+            margin-left: 20px;
+        }
     }
 }

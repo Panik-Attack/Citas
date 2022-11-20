@@ -28,10 +28,12 @@ export const CitasAdd = ({ handleAddCita }) => {
             <hr />
 
             <Modal
-                title='Agregar Cita'
+                title={<b>Agregar Cita</b>}
                 open={modal}
                 onCancel={closeModal}
                 footer={null}
+                closable={false}
+
             >
                 <FormCita closeModal={closeModal} handleAddCita={handleAddCita} />
             </Modal>

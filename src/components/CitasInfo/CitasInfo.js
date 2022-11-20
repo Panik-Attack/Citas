@@ -1,19 +1,52 @@
-import { List, Modal } from 'antd'
+import { List } from 'antd'
 import Item from 'antd/lib/list/Item'
 import React from 'react'
 
-export const CitasInfo = () => {
+
+export const CitasInfo = ({cita}) => {
   return (
     <div>
-      <Modal>
-
         <List>
+          
           <Item>
-
+            <p><b>Nombre de la Cita</b>: {cita.nombreCita}</p>
           </Item>
-        </List>
 
-      </Modal>
+          <Item>
+            <p><b>Descripcion</b>: {cita.descripcionCita} </p>
+          </Item>
+
+          <Item>
+            <p><b>Nombre del Producto</b>: {cita.nombreProducto} </p>
+          </Item>
+          
+          <Item>
+            <p><b>Precio del Producto</b>: ${cita.precioProducto} </p>
+          </Item>
+          
+          <Item>
+            <p><b>Disponible</b>: {JSON.stringify(cita.disponible)} </p>
+          </Item>
+          
+          <Item>
+            {(cita.confirm)
+            ?
+           <p> <b>Requiere Confirmacion?</b>: Si</p>
+            :
+            <p><b>Requiere Confirmacion?</b>: No</p>}
+          </Item>
+          
+          <Item>
+          {(cita.cancel)
+            ?
+           <p> <b>Puede cancelar?</b>: Si</p>
+            :
+            <p><b>Puede cancelar?</b>: No</p>}
+          </Item>
+
+
+
+        </List>
     </div>
   )
 }

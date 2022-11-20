@@ -66,7 +66,7 @@ export const FormCita = ({ closeModal, handleAddCita }) => {
       >
 
         <Item
-          label="Nombre de la Cita"
+          label={<b>Nombre de la cita</b>}
           name='nombreCita'
           rules={[
             {
@@ -84,7 +84,7 @@ export const FormCita = ({ closeModal, handleAddCita }) => {
         </Item>
 
         <Item
-          label='Descripcion'
+          label={<b>Descripcion</b>}
           name='descripcionCita'
           rules={[{
             required: true,
@@ -98,7 +98,7 @@ export const FormCita = ({ closeModal, handleAddCita }) => {
         <br />
 
         <Item
-          label='Nombre del producto'
+          label={<b>Nombre del producto</b>}
           name='nombreProducto'
           rules={[{
             required: true,
@@ -116,7 +116,7 @@ export const FormCita = ({ closeModal, handleAddCita }) => {
         </Item>
 
         <Item
-          label='Precio'
+          label={<b>Precio</b>}
           name='precioProducto'
           rules={[{
             required: true,
@@ -128,7 +128,7 @@ export const FormCita = ({ closeModal, handleAddCita }) => {
           />
         </Item>
 
-        <Item label='Tipo de Producto'>
+        <Item label={<b>Tipo de Producto</b>}>
           <Group onChange={onChange} value={value} name='disponibilidad' defaultValue={1}>
             <Radio value={1}>Servicio</Radio>
             <Radio value={2}>Material</Radio>
@@ -139,8 +139,8 @@ export const FormCita = ({ closeModal, handleAddCita }) => {
         (value === 1
           ?
           <Item
-              label='Disponibilidad'
-              name="date"
+              label={<b>Disponibilidad</b>}
+              name="disponible"
               hasFeedback
               rules={[
                 {
@@ -150,12 +150,14 @@ export const FormCita = ({ closeModal, handleAddCita }) => {
 
               ]}
           >
-            <DatePicker />
+            <DatePicker
+            format='YYYY-MM-DD'
+            onChange={(date) => console.log(date)} />
           </Item>
           :
           <Item
-              label='Disponibilidad'
-              name='cantidadProducto'
+              label={<b>Disponibilidad</b>}
+              name='disponible'
               hasFeedback
               rules={[
                 {
@@ -174,11 +176,11 @@ export const FormCita = ({ closeModal, handleAddCita }) => {
         
 
         <Item name='confirm' valuePropName="checked">
-          <Checkbox>Requiere Confirmacion?</Checkbox>
+          <Checkbox><b>Requiere Confirmacion?</b></Checkbox>
         </Item>
 
         <Item name='cancel' valuePropName="checked">
-          <Checkbox>Puede Cancelar?</Checkbox>
+          <Checkbox><b>Puede Cancelar?</b></Checkbox>
         </Item>
 
         <br />
