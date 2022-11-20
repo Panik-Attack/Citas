@@ -39,7 +39,9 @@ export const CitasAdd = ({ handleAddCita }) => {
 
             <Button
                 type='primary'
+                shape='round'
                 onClick={openModal}
+                
             >
                 Agregar Cita
             </Button>
