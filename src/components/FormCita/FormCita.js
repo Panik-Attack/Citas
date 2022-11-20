@@ -29,7 +29,6 @@ export const FormCita = ({ closeModal, handleAddCita }) => {
   }
 
   const formSuccess = (datos) => {
-    console.log('Formulario enviado', datos)
 
     const newCita = {
       id: new Date().getTime(),
@@ -37,15 +36,17 @@ export const FormCita = ({ closeModal, handleAddCita }) => {
       ...datos
     }
 
-    console.log(newCita.id)
-
     handleAddCita(newCita)
 
     form.resetFields()
+
+    closeModal()
   }
 
   const formFailed = (error) => {
-    console.log('Error', error)
+
+    console.log(error)
+
   }
 
   return (
@@ -70,7 +71,7 @@ export const FormCita = ({ closeModal, handleAddCita }) => {
             message: 'Por favor ingresar el nombre de la cita'
           }]}>
           <Input
-            placeholder="ej.. Psiquiatria, Carpinteria"
+            placeholder="Psiquiatria, Carpinteria"
           />
         </Item>
 
@@ -82,7 +83,7 @@ export const FormCita = ({ closeModal, handleAddCita }) => {
             message: 'Por favor ingresar la descripcion de la cita'
           }]}>
           <TextArea
-            placeholder="ej... Ofrecemos Servicios de ..."
+            placeholder="Ofrecemos Servicios de ..."
 
           />
         </Item>
@@ -97,7 +98,7 @@ export const FormCita = ({ closeModal, handleAddCita }) => {
             message: 'Por favor ingresar el nombre del Producto'
           }]}>
           <Input
-            placeholder="ej... Consulta medica, Mesa de madera ..."
+            placeholder="Consulta medica, Mesa de madera ..."
 
           />
         </Item>
@@ -110,7 +111,7 @@ export const FormCita = ({ closeModal, handleAddCita }) => {
             message: 'Por favor ingresar el precio del Producto'
           }]}>
           <InputNumber
-            placeholder="ej..$150.00"
+            placeholder="$150.00"
 
           />
         </Item>
@@ -122,12 +123,27 @@ export const FormCita = ({ closeModal, handleAddCita }) => {
           </Group>
         </Item>
 
-        <Item
-          label='Disponibilidad'
-          name="date"
-        >
-          <DatePicker />
-        </Item>
+        {
+        (value === 1
+          ?
+          <Item
+              label='Disponibilidad'
+              name="date"
+          >
+            <DatePicker />
+          </Item>
+          :
+          <Item
+              label='Disponibilidad'
+              name='cantidadProducto'
+          >
+          <InputNumber
+            placeholder="1, 2, 3, ..."
+          />
+          </Item>
+            )
+        }
+        
 
         <Item name='confirm' valuePropName="checked">
           <Checkbox>Requiere Confirmacion?</Checkbox>
@@ -137,11 +153,10 @@ export const FormCita = ({ closeModal, handleAddCita }) => {
           <Checkbox>Puede Cancelar?</Checkbox>
         </Item>
 
-        <hr />
         <br />
         <div className="btnContainer">  
           <Button onClick={closeModal} danger>Cancelar</Button>
-          <Button onClick={closeModal} type='primary' htmlType="submit">Agregar</Button>
+          <Button type='primary' htmlType="submit">Agregar</Button>
         </div>   
       </Form>
     </div>

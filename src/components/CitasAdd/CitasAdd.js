@@ -30,8 +30,6 @@ export const CitasAdd = ({ handleAddCita }) => {
                 open={modal}
                 onCancel={closeModal}
                 footer={null}
-
-
             >
                 <FormCita closeModal={closeModal} handleAddCita={handleAddCita} />
             </Modal>
@@ -40,7 +38,6 @@ export const CitasAdd = ({ handleAddCita }) => {
             <Button
                 type='primary'
                 onClick={openModal}
-
             >
                 Agregar Cita
             </Button>

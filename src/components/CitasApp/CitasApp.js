@@ -53,9 +53,7 @@ export const CitasApp = () => {
             <br />
             <div>
                 {
-
-
-                    (citas == '' //Si ponemos que es esactamente igual no sale el mensaje de que no hay citas
+                    (citas.length === 0
                         ?
                         <h2 className='msgNoDis'>No hay citas disponibles :(</h2>
                         :
